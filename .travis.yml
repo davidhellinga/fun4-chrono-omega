@@ -1,23 +1,21 @@
-language: java
-jdk:
-  - oraclejdk8
-  - junit
-
 jobs:
   include:
-    - stage: "Getting maven wrapper"
+    - stage: Getting maven wrapper
       install:
         - mvn -N io.takari:maven:wrapper
-        - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+        - "./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
     - stage: unit tests
-      script: "Running unit tests (1)"
-    - stage: unit tests
-      script: "Running unit tests (2)"
+      script: Running unit tests
     - stage: deploy to production
+      jdk: oraclejdk8
       script: skip
       deploy:
         provider: heroku
+        api_key:
+          secure: nsdLJoxkIVCcvUGtsT90PT9Zr9wYVx2gM8tNQrqq2vWFrUJOhXD9nMfomFcXrXQh187/ztFV634q9FRm2UgJj1KEPUK21flSfC+K4zJHQC3/mTrztfgwCiFWOm6EG2GFC8p3Fthg9uvzzntvt7zymJgUAIDFFyI+JAbXsdqnOZvliZRkdp19pou1NfiSTiGkK9OixXywE1TvTsopc0g01NEnH73+/vrJ+9FQPlr/J1uQPUFZBgPxL8SGpzn09lJ76S/wiQXlbhlBTKrLLePZ7Ec3OQXUuOsuEWKxYwG9YCf2mSVIqkSNB82O2pikBYtM9XNbLTbB/Ij+5ilg3EdxHPPHg/XCvkdDUYZKM1R9wPXFN9xS6akMvGCFMah/uUcMBkmxJOEAcL4LOwUcvy6oKBomXMDVt6LlAehxzQr8K3QzEn5Y5Qlq2FBpqM3Js9ihIa37v0j2Ns53fFGZMJzQsOkBy3M7Sh1PoKGI6tCGx+68hfh7cwq1nSlPj0133PoApNpWVsmR3+FXe8cmGfExc7zgpVO+J6/zVB3vR6gW4KLem7tkdWK4lyPO15QVszDtxvl0Wm+vnTuOEjeS7TFGDR2SxPutNP89v4FJ+21Kupu/gOtfJ1iS1OHR7FeRYl9JRZmu4ZL4NQROXoSdtZw3edvun7hagtHMsNl4wbkVtus=
         app: chrono-omega
-        api_key: $HEROKU_AUTH_TOKEN
+        on: production
+          repo: davidhellinga/fun4-chrono-omega
     - stage: test production
-      script: 'curl https://chrono-omega.herokuapp.com/'
+      script: "curl https://chrono-omega.herokuapp.com/"
+

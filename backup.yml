@@ -1,0 +1,20 @@
+jobs:
+  include:
+    - stage: "Getting maven wrapper"
+      install:
+        - mvn -N io.takari:maven:wrapper
+        - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+    - stage: "JDK Setup"
+        jdk: oraclejdk8
+    - stage: unit tests
+      script: "Running unit tests"
+    - stage: deploy to production
+      script: skip
+      deploy:
+        on: production
+        provider: heroku
+        app: chrono-omega
+        api_key:
+          secure: $HEROKU_AUTH_TOKEN
+    - stage: test production
+      script: 'curl https://chrono-omega.herokuapp.com/'
