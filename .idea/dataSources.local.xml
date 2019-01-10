@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="chrono@oibssdb.database.windows.net" uuid="33cfdfe8-3255-4921-907c-73c8915584af">
+      <database-info product="Microsoft SQL Server" version="12.00.1000" jdbc-version="4.2" driver-name="Microsoft JDBC Driver 7.0 for SQL Server" driver-version="7.0.0.0" dbms="AZURE" exact-version="12.0.1000" exact-driver-version="7.0">
+        <extra-name-characters>$#@</extra-name-characters>
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>oxinbox@oibssdb</user-name>
+      <introspection-schemas>@:@|chrono:dbo</introspection-schemas>
+    </data-source>
+  </component>
+</project>

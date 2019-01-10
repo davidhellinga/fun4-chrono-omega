@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <property name = "hibernate.dialect">
+            org.hibernate.dialect.SQLServerDialect
+        </property>
+        <property name="hibernate.connection.driver_class">
+            com.microsoft.sqlserver.jdbc.SQLServerDriver
+        </property>
+        <property name = "hibernate.connection.url">
+            jdbc:sqlserver://oibssdb.database.windows.net:1433;database=chrono;user=oxinbox@oibssdb;password=wT89tGVpiPo1wkUo;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+        </property>
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">update</property> <!--create or update-->
+
+        <!-- The mapping information of entities -->
+        <mapping class="models.Account"/>
+        <mapping class="models.Event"/>
+        <mapping class="models.EventProperty"/>
+        <mapping class="models.Timeline"/>
+        <mapping class="models.Dateformat"/>
+
+
+
+    </session-factory>
+</hibernate-configuration>

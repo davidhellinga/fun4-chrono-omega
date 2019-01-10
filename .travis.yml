@@ -1,0 +1,14 @@
+language: java
+jdk:
+  - oraclejdk8
+  - junit
+# git strips the wrapper jar file so we have to force its download during the build
+install:
+  - mvn -N io.takari:maven:wrapper
+  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+deploy:
+  provider: heroku
+  api_key:
+    secure: c+uC8VuzrXMokOXmGYrGoDc0LOho6gjv3MraOgKiREIvg0xl8zvzEIH1BxP896oifgZCqZyqa2/9K49DTBARDHy5lp3h66vO0pui/Ym4qGDHzYTBfSEDNfM6XWzx3Bn0SI0K6Hy0ZOxZ/bU5eWkT9uhAZt62M8L+YOoz57e5KgM0cW1QiNEihSGiMOSXc8u+YeAOFxofU0ciCRv13HbD1JnVc3KVourhFS9UHkJA18gv0PKPuDNgZ6GY75g4VqdNVliGO40kEeebKwB7NPh/6fzRU/XzEvGKHZsFdyJB4Ir1G6IPqGBI3alhVnYAvg5KuqmmRrcxzylyT3qD6Gf/f22APGVdd6/kxXRqSo8sQ72NXLqJXohvzS+6Pz8nJOPFV/ozN/Bsd5GyLUcK/tDjSr3ntJcs3RL2FVg3RV+VbcAKmBzudTo0OtuUF8e0dOUI60sfIaA74ye+KVyHB6x+Pfg+iCB5/9vi2seLNBTn6R6rx6sHBjIevW783xXtCsnZUQQDVpjiD0Xya3jty7Hd7C8ycHHRrvPGZo+XCo/qLORgov3OKG0SZG2NsUqsTXthYDb/v34LPoYTdzB+0JU+IlmcUQ/SoPXW5i8+P2BTUTMa9FUXPPKvkWjI8moGfMGxek/vK8sSlEKohPg0isdVm7M8D3E7zImvhhexIP/vjTU=
+  on: production
+  app: chrono-omega
