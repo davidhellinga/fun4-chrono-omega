@@ -1,11 +1,11 @@
 jobs:
   include:
-    - stage: Getting maven wrapper
+    - stage: '" Getting maven wrapper"
       install:
         - mvn -N io.takari:maven:wrapper
-        - "./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
+        - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
     - stage: unit tests
-      script: Running unit tests
+      script: "Running unit tests"
     - stage: deploy to production
       jdk: oraclejdk8
       script: skip
