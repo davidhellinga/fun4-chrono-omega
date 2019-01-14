@@ -2,39 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="726332a9-3789-46e2-b053-d9a1ea4700f7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/Criterial.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/HibernateUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/repository/AbstractRepository$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/repository/AbstractRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/repository/AccountRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/repository/DateformatRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/repository/EventPropertyRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/repository/EventRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/repository/IRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/repository/TimelineRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/specification/AbstractSpecification$AndSpecification.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/specification/AbstractSpecification$NotSpecification.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/specification/AbstractSpecification$OrSpecification.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/specification/AbstractSpecification.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/specification/AccountSpecification$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/specification/AccountSpecification.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dbal/specification/Specifiable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Account.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Dateformat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Event.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/EventProperty.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Timeline.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/RestServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/TestConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/handler/PersistenceHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/reply/Reply.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/reply/Status.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/request/RequestResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/responseModels/SubmitResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/responseModels/SubmitResultResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/services/RestService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -151,8 +119,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+            <state relative-caret-position="51">
+              <caret line="3" column="9" lean-forward="true" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -349,7 +317,7 @@
     <property name="JPA.DatabaseSchemaImportDialog" value="33cfdfe8-3255-4921-907c-73c8915584af" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547442681815" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547442966224" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Killerappfun4-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -452,12 +420,12 @@
       <workItem from="1547086963103" duration="2124000" />
       <workItem from="1547119141449" duration="2363000" />
       <workItem from="1547122640799" duration="9880000" />
-      <workItem from="1547439002026" duration="1565000" />
+      <workItem from="1547439002026" duration="1872000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15932000" />
+    <option name="totallyTimeSpent" value="16239000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -470,6 +438,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7322946" visible="true" weight="0.21342282" />
       <window_info id="Structure" order="1" sideWeight="0.5047985" side_tool="true" weight="0.3" />
@@ -745,8 +714,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        <state relative-caret-position="51">
+          <caret line="3" column="9" lean-forward="true" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
         </state>
       </provider>
     </entry>
