@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/Killerapp-1.0-SNAPSHOT-jar-with-dependencies.jar $PORT
+web: java $JAVA_OPTS -jar target/omega-1.0-SNAPSHOT-jar-with-dependencies.jar $PORT
