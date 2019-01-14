@@ -73,7 +73,8 @@ public class RestService {
     private Response responseBuilder(int code, String message) {
         return Response.status(code).entity(message).build();
     }
-    private Response responseBuilder(Reply reply){
+
+    private Response responseBuilder(Reply reply) {
         return responseBuilder(reply.getStatus().getCode(), reply.getMessage());
     }
 
@@ -93,8 +94,8 @@ public class RestService {
         String email = confirmLoggedIn(token);
         if (email == null) return responseBuilder(200, "Invalid session.");
 
-        if (persistenceHandler.event(data)) reply=new Reply(Status.OK, true);
-        else reply=new Reply(Status.ERROR, false);
+        if (persistenceHandler.event(data)) reply = new Reply(Status.OK, true);
+        else reply = new Reply(Status.ERROR, false);
         return responseBuilder(reply);
     }
 
@@ -105,98 +106,31 @@ public class RestService {
         String email = confirmLoggedIn(token);
         if (email == null) return responseBuilder(200, "Invalid session.");
 
-        if (persistenceHandler.deleteEvent(id)) reply=new Reply(Status.OK, true);
-        else reply=new Reply(Status.ERROR, false);
+        if (persistenceHandler.deleteEvent(id)) reply = new Reply(Status.OK, true);
+        else reply = new Reply(Status.ERROR, false);
         return responseBuilder(reply);
     }
 
     @GET
     @Path("/eventshell")
-    public Response eventShell(){
-        Gson gson=new Gson();
+    public Response eventShell() {
+        Gson gson = new Gson();
 
-        EventCreationModel eventCreationModel=new EventCreationModel("name","01/01/2000",1);
+        EventCreationModel eventCreationModel = new EventCreationModel("name", "01/01/2000", 1);
         eventCreationModel.setEventId(1);
-        eventCreationModel.addProperty(new EventPropertyModel(1,"generic description","property name", 1));
-        Reply reply=new Reply(Status.OK, gson.toJson(eventCreationModel));
+        eventCreationModel.addProperty(new EventPropertyModel(1, "generic description", "property name", 1));
+        Reply reply = new Reply(Status.OK, gson.toJson(eventCreationModel));
         return responseBuilder(reply);
     }
 
     @GET
     @Path("/getEvents")
-    public Response getEvents(@QueryParam("token") String token, @QueryParam("id") int timelineId){
+    public Response getEvents(@QueryParam("token") String token, @QueryParam("id") int timelineId) {
         Reply reply;
         String email = confirmLoggedIn(token);
         if (email == null) return responseBuilder(200, "Invalid session.");
 
-        reply=new Reply(Status.OK, persistenceHandler.getEvents(timelineId));
+        reply = new Reply(Status.OK, persistenceHandler.getEvents(timelineId));
         return responseBuilder(reply);
     }
-
 }
-
-/*
-@POST
-    @Consumes("application/json")
-    @Path("/submit")
-    public Response submit(String data) {
-        Gson gson = new Gson();
-        Reply reply = null;
-        SubmitResponse submitResponse = gson.fromJson(data, SubmitResponse.class);
-        persistenceHandler.SubmitEntry(submitResponse.getProblemWords(), submitResponse.getTranslationWords(), submitResponse.getTitle(), submitResponse.getProblemLanguage(), submitResponse.getTranslationLanguage(), submitResponse.getPersonEmail());
-        reply = new Reply(Status.OK, true);
-        return Response.status(reply.getStatus().getCode())
-                .entity(reply.getMessage()).build();
-    }
-
-    @GET
-    @Path("/getlists")
-    public Response findLists() {
-        Reply reply = new Reply(Status.OK, persistenceHandler.GetLists());
-        return Response.status(reply.getStatus().getCode())
-                .entity(reply.getMessage()).build();
-    }
-
-    @GET
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Path("/getlistbyid")
-    public Response findListById(@DefaultValue("") @QueryParam("id") String id, @Context UriInfo uriInfo) {
-
-        Reply reply = new Reply(Status.OK, persistenceHandler.GetListById(Integer.parseInt(id)));
-        return Response.status(reply.getStatus().getCode())
-                .entity(reply.getMessage()).build();
-    }
-
-    @GET
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Path("/getlistsbyemail")
-    public Response findListsByEmail(@DefaultValue("") @QueryParam("email") String email, @Context UriInfo uriInfo) {
-
-        Reply reply = new Reply(Status.OK, persistenceHandler.GetListsByEmail(email));
-        return Response.status(reply.getStatus().getCode())
-                .entity(reply.getMessage()).build();
-    }
-
-    @POST
-    @Consumes("application/json")
-    @Path("/submitresult")
-    public Response submitResult(String data) {
-        Gson gson = new Gson();
-        Reply reply = null;
-        SubmitResultResponse submitResultResponse = gson.fromJson(data, SubmitResultResponse.class);
-        persistenceHandler.SubmitResultEntry(submitResultResponse.getWordListId(), submitResultResponse.getScore(), submitResultResponse.getTotal(), submitResultResponse.getEmail());
-        reply = new Reply(Status.OK, true);
-        return Response.status(reply.getStatus().getCode())
-                .entity(reply.getMessage()).build();
-    }
-
-    @GET
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Path("/getresultsbyemail")
-    public Response findResultsByEmail(@DefaultValue("") @QueryParam("email") String email, @Context UriInfo uriInfo) {
-
-        Reply reply = new Reply(Status.OK, persistenceHandler.GetResultsByEmail(email));
-        return Response.status(reply.getStatus().getCode())
-                .entity(reply.getMessage()).build();
-    }
- */

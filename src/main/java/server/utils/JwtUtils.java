@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import dbal.specification.AccountSpecification;
 import models.Account;
 import server.handler.PersistenceHandler;
 
@@ -51,7 +52,7 @@ public class JwtUtils {
     }
 
     public String login(String email, String password) {
-        Account account = persistence.getAccountByMail(email);
+        Account account = persistence.getAccountRepository().findOne(AccountSpecification.getByEmail(email));
         if (account == null) return null;
         if (!hashUtil.Sha256Hash(password).equals(account.getPassword())) return null;
         return createToken(email, account.getId());

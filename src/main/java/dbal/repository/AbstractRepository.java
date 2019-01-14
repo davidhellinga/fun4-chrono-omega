@@ -80,13 +80,7 @@ public abstract class AbstractRepository<T, Id extends Serializable> implements 
             entities.forEach(session::delete);
             tx.commit();
         } catch (RuntimeException e) {
-            Util.logException(e);
-            try {
-                if (tx != null)
-                    tx.rollback();
-            } catch (HibernateException he) {
-                Util.logException(he);
-            }
+            catchLogRollback(tx, e);
         } finally {
             session.close();
         }
@@ -219,18 +213,22 @@ public abstract class AbstractRepository<T, Id extends Serializable> implements 
             tx.commit();
             return result;
         } catch (RuntimeException e) {
-            Util.logException(e);
-            try {
-                if (tx != null)
-                    tx.rollback();
-            } catch (HibernateException he) {
-                Util.logException(he);
-            }
+            catchLogRollback(tx, e);
         } finally {
             session.close();
         }
 
         return Collections.emptyList();
+    }
+
+    private void catchLogRollback(Transaction tx, RuntimeException e) {
+        Util.logException(e);
+        try {
+            if (tx != null)
+                tx.rollback();
+        } catch (HibernateException he) {
+            Util.logException(he);
+        }
     }
 
     private Criteria buildCriteria(Criteria criteria, Specifiable spec) {
