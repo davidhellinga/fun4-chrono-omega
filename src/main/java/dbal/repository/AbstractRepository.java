@@ -18,12 +18,6 @@ import java.util.List;
 public abstract class AbstractRepository<T, Id extends Serializable> implements IRepository<T, Id> {
 
     private static String entityNull = "Entity can't be null";
-
-    @Override
-    public Session openSession() {
-        return HibernateUtil.getSessionFactory().openSession();
-    }
-
     private static ThreadLocal<Session> threadSafeSession = new ThreadLocal<Session>() {
         @Override
         protected Session initialValue() {
@@ -31,6 +25,10 @@ public abstract class AbstractRepository<T, Id extends Serializable> implements 
         }
     };
 
+    @Override
+    public Session openSession() {
+        return HibernateUtil.getSessionFactory().openSession();
+    }
 
     @Override
     public void delete(Id id) {
@@ -94,6 +92,7 @@ public abstract class AbstractRepository<T, Id extends Serializable> implements 
         }
     }
 
+
     @Override
     @SuppressWarnings("unchecked")
     public T findOne(Id id) {
@@ -144,7 +143,6 @@ public abstract class AbstractRepository<T, Id extends Serializable> implements 
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public List<T> findAll() {
         return findAll(null);
     }
