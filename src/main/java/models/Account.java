@@ -13,23 +13,14 @@ public class Account {
     @Column(name = "id", unique = true, nullable = false)
     int id;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Timeline> timelines = new ArrayList<>();
-
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Dateformat dateformat;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private transient List<Timeline> timelines = new ArrayList<>();
 
     @NotNull
     private String email;
 
     @NotNull
-    public Dateformat getDateformat() {
-        return dateformat;
-    }
-
-    public void setDateformat(Dateformat dateformat) {
-        this.dateformat = dateformat;
-    }
+    private String password;
 
     public int getId() {
         return id;
@@ -49,6 +40,7 @@ public class Account {
 
     public void addTimeline(Timeline timeline) {
         this.timelines.add(timeline);
+        timeline.setAccount(this);
     }
 
     public String getEmail() {
@@ -57,5 +49,13 @@ public class Account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

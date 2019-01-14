@@ -2,97 +2,135 @@ package server.services;
 
 import com.google.gson.Gson;
 import server.handler.PersistenceHandler;
+import server.models.EventCreationModel;
+import server.models.EventPropertyModel;
 import server.reply.Reply;
 import server.reply.Status;
-import server.responseModels.SubmitResponse;
-import server.responseModels.SubmitResultResponse;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
+import java.util.List;
 
 @Path("/api")
-    public class RestService {
+public class RestService {
 
-    PersistenceHandler persistenceHandler = new PersistenceHandler();
+    private PersistenceHandler persistenceHandler = new PersistenceHandler();
 
     //ADD REST FUNCTIONALITY HERE
 
     @GET
     @Path("/getaccounts")
-    public Response findLists() {
-        Reply reply = new Reply(Status.OK, persistenceHandler.GetAccounts());
-        return Response.status(reply.getStatus().getCode())
-                .entity(reply.getMessage()).build();
+    public Response getAccounts() {
+        Reply reply = new Reply(Status.OK, persistenceHandler.getAccounts());
+        return responseBuilder(reply);
     }
 
+    @POST
+    @Path("/newaccount")
+    public Response newAccount(@QueryParam("mail") String email, @QueryParam("pw") String password) {
+        Reply reply;
+        Boolean success = persistenceHandler.newAccount(email, password);
+        if (success) {
+            reply = new Reply(Status.OK, true);
+        } else reply = new Reply(Status.ERROR, false);
+        return responseBuilder(reply);
 
-}
-
-/*
-@POST
-    @Consumes("application/json")
-    @Path("/submit")
-    public Response submit(String data) {
-        Gson gson = new Gson();
-        Reply reply = null;
-        SubmitResponse submitResponse = gson.fromJson(data, SubmitResponse.class);
-        persistenceHandler.SubmitEntry(submitResponse.getProblemWords(), submitResponse.getTranslationWords(), submitResponse.getTitle(), submitResponse.getProblemLanguage(), submitResponse.getTranslationLanguage(), submitResponse.getPersonEmail());
-        reply = new Reply(Status.OK, true);
-        return Response.status(reply.getStatus().getCode())
-                .entity(reply.getMessage()).build();
     }
 
     @GET
-    @Path("/getlists")
-    public Response findLists() {
-        Reply reply = new Reply(Status.OK, persistenceHandler.GetLists());
-        return Response.status(reply.getStatus().getCode())
-                .entity(reply.getMessage()).build();
+    @Path("/login")
+    public Response login(@QueryParam("mail") String email, @QueryParam("pw") String password) {
+        Reply reply;
+        String token = persistenceHandler.login(email, password);
+        if (token == null) reply = new Reply(Status.ERROR, false);
+        else reply = new Reply(Status.OK, token);
+        return responseBuilder(reply);
     }
 
     @GET
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Path("/getlistbyid")
-    public Response findListById(@DefaultValue("") @QueryParam("id") String id, @Context UriInfo uriInfo) {
+    @Path("/verifytoken")
+    public Response verifyToken(@QueryParam("token") String token) {
+        Reply reply = new Reply(Status.OK, persistenceHandler.verifyToken(token));
+        return responseBuilder(reply);
+    }
 
-        Reply reply = new Reply(Status.OK, persistenceHandler.GetListById(Integer.parseInt(id)));
-        return Response.status(reply.getStatus().getCode())
-                .entity(reply.getMessage()).build();
+    @POST
+    @Path("/newtimeline")
+    public Response newTimeline(@QueryParam("token") String token, @QueryParam("name") String name) {
+        Reply reply;
+        String email = confirmLoggedIn(token);
+        if (email == null) return responseBuilder(200, "Invalid session.");
+        boolean success = persistenceHandler.newTimeline(email, name);
+        if (success) reply = new Reply(Status.OK, true);
+        else reply = new Reply(Status.ERROR, "Timeline already exists, or an error occurred.");
+        return responseBuilder(reply);
+    }
+
+    private String confirmLoggedIn(String token) {
+        return persistenceHandler.verifyToken(token);
+    }
+
+    private Response responseBuilder(int code, String message) {
+        return Response.status(code).entity(message).build();
+    }
+
+    private Response responseBuilder(Reply reply) {
+        return responseBuilder(reply.getStatus().getCode(), reply.getMessage());
     }
 
     @GET
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Path("/getlistsbyemail")
-    public Response findListsByEmail(@DefaultValue("") @QueryParam("email") String email, @Context UriInfo uriInfo) {
-
-        Reply reply = new Reply(Status.OK, persistenceHandler.GetListsByEmail(email));
-        return Response.status(reply.getStatus().getCode())
-                .entity(reply.getMessage()).build();
+    @Path("/timelines")
+    public Response timelines(@QueryParam("token") String token) {
+        List l = persistenceHandler.getTimelines(persistenceHandler.verifyToken(token));
+        Reply reply = new Reply(Status.OK, l);
+        return responseBuilder(reply);
     }
 
     @POST
     @Consumes("application/json")
-    @Path("/submitresult")
-    public Response submitResult(String data) {
-        Gson gson = new Gson();
-        Reply reply = null;
-        SubmitResultResponse submitResultResponse = gson.fromJson(data, SubmitResultResponse.class);
-        persistenceHandler.SubmitResultEntry(submitResultResponse.getWordListId(), submitResultResponse.getScore(), submitResultResponse.getTotal(), submitResultResponse.getEmail());
-        reply = new Reply(Status.OK, true);
-        return Response.status(reply.getStatus().getCode())
-                .entity(reply.getMessage()).build();
+    @Path("/event")
+    public Response event(@QueryParam("token") String token, String data) {
+        Reply reply;
+        String email = confirmLoggedIn(token);
+        if (email == null) return responseBuilder(200, "Invalid session.");
+
+        if (persistenceHandler.event(data)) reply = new Reply(Status.OK, true);
+        else reply = new Reply(Status.ERROR, false);
+        return responseBuilder(reply);
+    }
+
+    @POST
+    @Path("/deleteEvent")
+    public Response deleteEvent(@QueryParam("token") String token, @QueryParam("id") int id) {
+        Reply reply;
+        String email = confirmLoggedIn(token);
+        if (email == null) return responseBuilder(200, "Invalid session.");
+
+        if (persistenceHandler.deleteEvent(id)) reply = new Reply(Status.OK, true);
+        else reply = new Reply(Status.ERROR, false);
+        return responseBuilder(reply);
     }
 
     @GET
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Path("/getresultsbyemail")
-    public Response findResultsByEmail(@DefaultValue("") @QueryParam("email") String email, @Context UriInfo uriInfo) {
+    @Path("/eventshell")
+    public Response eventShell() {
+        Gson gson = new Gson();
 
-        Reply reply = new Reply(Status.OK, persistenceHandler.GetResultsByEmail(email));
-        return Response.status(reply.getStatus().getCode())
-                .entity(reply.getMessage()).build();
+        EventCreationModel eventCreationModel = new EventCreationModel("name", "01/01/2000", 1);
+        eventCreationModel.setEventId(1);
+        eventCreationModel.addProperty(new EventPropertyModel(1, "generic description", "property name", 1));
+        Reply reply = new Reply(Status.OK, gson.toJson(eventCreationModel));
+        return responseBuilder(reply);
     }
- */
+
+    @GET
+    @Path("/getEvents")
+    public Response getEvents(@QueryParam("token") String token, @QueryParam("id") int timelineId) {
+        Reply reply;
+        String email = confirmLoggedIn(token);
+        if (email == null) return responseBuilder(200, "Invalid session.");
+
+        reply = new Reply(Status.OK, persistenceHandler.getEvents(timelineId));
+        return responseBuilder(reply);
+    }
+}

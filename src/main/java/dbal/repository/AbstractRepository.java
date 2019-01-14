@@ -18,12 +18,6 @@ import java.util.List;
 public abstract class AbstractRepository<T, Id extends Serializable> implements IRepository<T, Id> {
 
     private static String entityNull = "Entity can't be null";
-
-    @Override
-    public Session openSession() {
-        return HibernateUtil.getSessionFactory().openSession();
-    }
-
     private static ThreadLocal<Session> threadSafeSession = new ThreadLocal<Session>() {
         @Override
         protected Session initialValue() {
@@ -31,6 +25,10 @@ public abstract class AbstractRepository<T, Id extends Serializable> implements 
         }
     };
 
+    @Override
+    public Session openSession() {
+        return HibernateUtil.getSessionFactory().openSession();
+    }
 
     @Override
     public void delete(Id id) {
@@ -82,17 +80,12 @@ public abstract class AbstractRepository<T, Id extends Serializable> implements 
             entities.forEach(session::delete);
             tx.commit();
         } catch (RuntimeException e) {
-            Util.logException(e);
-            try {
-                if (tx != null)
-                    tx.rollback();
-            } catch (HibernateException he) {
-                Util.logException(he);
-            }
+            catchLogRollback(tx, e);
         } finally {
             session.close();
         }
     }
+
 
     @Override
     @SuppressWarnings("unchecked")
@@ -144,7 +137,6 @@ public abstract class AbstractRepository<T, Id extends Serializable> implements 
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public List<T> findAll() {
         return findAll(null);
     }
@@ -221,18 +213,22 @@ public abstract class AbstractRepository<T, Id extends Serializable> implements 
             tx.commit();
             return result;
         } catch (RuntimeException e) {
-            Util.logException(e);
-            try {
-                if (tx != null)
-                    tx.rollback();
-            } catch (HibernateException he) {
-                Util.logException(he);
-            }
+            catchLogRollback(tx, e);
         } finally {
             session.close();
         }
 
         return Collections.emptyList();
+    }
+
+    private void catchLogRollback(Transaction tx, RuntimeException e) {
+        Util.logException(e);
+        try {
+            if (tx != null)
+                tx.rollback();
+        } catch (HibernateException he) {
+            Util.logException(he);
+        }
     }
 
     private Criteria buildCriteria(Criteria criteria, Specifiable spec) {

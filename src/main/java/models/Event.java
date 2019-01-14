@@ -18,8 +18,20 @@ public class Event {
     @NotNull
     private String date;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<EventProperty> properties;
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private transient List<EventProperty> properties;
+
+    @ManyToOne
+    @JoinColumn(name="fk_timeline")
+    private Timeline timeline;
+
+    public Timeline getTimeline() {
+        return timeline;
+    }
+
+    public void setTimeline(Timeline timeline) {
+        this.timeline = timeline;
+    }
 
     public String getName() {
         return name;
@@ -43,6 +55,11 @@ public class Event {
 
     public void setProperties(List<EventProperty> properties) {
         this.properties = properties;
+    }
+
+    public void addProperty(EventProperty property){
+        this.properties.add(property);
+        property.setEvent(this);
     }
 
     public int getId() {

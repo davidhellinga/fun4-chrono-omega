@@ -12,14 +12,26 @@ public class Timeline {
     @Column(name = "id", unique = true, nullable = false)
     int id;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Event> events;
+    @OneToMany(mappedBy = "timeline",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private transient List<Event> events;
 
     @NotNull
     private String title;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Dateformat dateformat;
+
+    @ManyToOne
+    @JoinColumn(name="fk_account")
+    private Account account;
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
     public Dateformat getDateformat() {
         return dateformat;
@@ -55,5 +67,6 @@ public class Timeline {
 
     public void addEvent(Event event){
         this.events.add(event);
+        event.setTimeline(this);
     }
 }
