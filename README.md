@@ -1,2 +1,2 @@
 # fun4-chrono-omega
--Webserver for Fun4 project Chrono: ReactJS Frontend
+-Data server for Fun4 project Chrono: REST Server + ORM Implementation
