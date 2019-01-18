@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="726332a9-3789-46e2-b053-d9a1ea4700f7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/server/utils/HashUtilTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/server/utils/HashUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stubs/RepositoryStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stubs/RepositoryStub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/models/EventCreationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/models/EventCreationModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/models/EventCreationModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/models/EventCreationModelTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,6 +41,13 @@
         <item name="chrono: database" type="ccb7ac2a:MsImplModel$Database" />
         <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="chrono@oibssdb.database.windows.net" type="feb32156:DbDataSourceImpl" />
+        <item name="chrono: database" type="ccb7ac2a:MsImplModel$Database" />
+        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
+        <item name="Timeline: table" type="63ab2ba1:MsImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -48,14 +55,14 @@
     <favorites_list name="fun4-chrono-omega" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3101971">
+    <splitter split-orientation="horizontal" split-proportion="0.19613017">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/server/models/EventCreationModel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="208">
-                  <caret line="106" column="40" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
+                <state relative-caret-position="828">
+                  <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1537#1538#0" expanded="true" />
@@ -70,10 +77,10 @@
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/test/java/server/utils/HashUtilTest.java">
+            <entry file="file://$PROJECT_DIR$/src/test/java/server/models/EventCreationModelTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+                <state relative-caret-position="88">
+                  <caret line="49" selection-start-line="49" selection-end-line="49" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -81,28 +88,19 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/server/utils/HashUtil.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/test/java/server/models/EventCreationModelTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-153">
-                  <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/pom.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="94">
+                  <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/test/java/stubs/RepositoryStub.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
+                <state relative-caret-position="74">
                   <caret line="18" column="93" selection-start-line="18" selection-start-column="93" selection-end-line="18" selection-end-column="93" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -144,6 +142,8 @@
       <find>juni</find>
       <find>suref</find>
       <find>jupiter</find>
+      <find>surefire-pl</find>
+      <find>platform</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -179,11 +179,9 @@
         <option value="$PROJECT_DIR$/src/main/java/server/models/TimelineModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/Account.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/EventProperty.java" />
-        <option value="$PROJECT_DIR$/src/main/java/models/Timeline.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/utils/GsonUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/models/eventCreationModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/models/EventPropertyModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/models/Event.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/src/main/java/dbal/repository/AbstractRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/dbal/specification/AccountSpecification.java" />
@@ -193,15 +191,17 @@
         <option value="$PROJECT_DIR$/src/main/java/server/handler/IPersistenceHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/handler/PersistenceHandler.java" />
         <option value="$PROJECT_DIR$/src/test/java/stubs/PersistenceHandlerStub.java" />
-        <option value="$PROJECT_DIR$/src/main/java/server/models/EventCreationModel.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/test/java/server/models/EventCreationModelTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/server/services/RestServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/server/utils/JwtUtilsTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/server/handler/PersistenceHandlerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/server/utils/HashUtil.java" />
         <option value="$PROJECT_DIR$/src/test/java/server/utils/HashUtilTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/stubs/RepositoryStub.java" />
+        <option value="$PROJECT_DIR$/src/main/java/server/models/EventCreationModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/Event.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/Timeline.java" />
+        <option value="$PROJECT_DIR$/src/test/java/server/models/EventCreationModelTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -358,7 +358,7 @@
     <property name="JPA.DatabaseSchemaImportDialog" value="33cfdfe8-3255-4921-907c-73c8915584af" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547793285706" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547795348678" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="database.console.LAST_STATE" value="false" />
@@ -442,6 +442,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="EventCreationModelTest.validateEventNullDataFailureTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="fun4-chrono-omega" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="server.models" />
+      <option name="MAIN_CLASS_NAME" value="server.models.EventCreationModelTest" />
+      <option name="METHOD_NAME" value="validateEventNullDataFailureTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="omega [install]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -497,9 +513,11 @@
       <item itemvalue="Maven.omega [install]" />
       <item itemvalue="Maven.omega [test]" />
       <item itemvalue="JUnit.EventCreationModelTest.fromEventValidDataSuccessTest" />
+      <item itemvalue="JUnit.EventCreationModelTest.validateEventNullDataFailureTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EventCreationModelTest.validateEventNullDataFailureTest" />
         <item itemvalue="Maven.omega [test]" />
         <item itemvalue="JUnit.EventCreationModelTest.fromEventValidDataSuccessTest" />
         <item itemvalue="Application.RestServer" />
@@ -526,7 +544,7 @@
       <workItem from="1547640621753" duration="2744000" />
       <workItem from="1547662087239" duration="2482000" />
       <workItem from="1547720440297" duration="596000" />
-      <workItem from="1547788394663" duration="4878000" />
+      <workItem from="1547788394663" duration="6938000" />
     </task>
     <servers />
   </component>
@@ -549,9 +567,21 @@
     <history-entry file="EventCreationModelTest_fromEventValidDataSuccessTest - 2019.01.18 at 07h 07m 44s.xml">
       <configuration name="EventCreationModelTest.fromEventValidDataSuccessTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="EventCreationModelTest_validateEventNullDataFailureTest - 2019.01.18 at 08h 02m 57s.xml">
+      <configuration name="EventCreationModelTest.validateEventNullDataFailureTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EventCreationModelTest_validateEventNullDataFailureTest - 2019.01.18 at 08h 03m 26s.xml">
+      <configuration name="EventCreationModelTest.validateEventNullDataFailureTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EventCreationModelTest_validateEventNullDataFailureTest - 2019.01.18 at 08h 04m 55s.xml">
+      <configuration name="EventCreationModelTest.validateEventNullDataFailureTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EventCreationModelTest_validateEventNullDataFailureTest - 2019.01.18 at 08h 05m 36s.xml">
+      <configuration name="EventCreationModelTest.validateEventNullDataFailureTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59489000" />
+    <option name="totallyTimeSpent" value="61549000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -577,8 +607,8 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2592068" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.16147308" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.44475922" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.19971672" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4036827" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -599,7 +629,7 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="right" id="Database" order="6" sideWeight="0.49823943" weight="0.020134227" />
+      <window_info anchor="right" id="Database" order="6" sideWeight="0.49823943" visible="true" weight="0.020134227" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" weight="0.3295302" />
@@ -624,12 +654,18 @@
           </properties>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/server/models/EventCreationModelTest.java</url>
+          <line>74</line>
+          <properties class="server.models.EventCreationModelTest" method="validateEventPrep">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/models/TimelineModel.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/utils/GsonUtil.java" />
     <entry file="das://33cfdfe8-3255-4921-907c-73c8915584af/database/chrono/schema/dbo/table/Timeline" />
     <entry file="das://33cfdfe8-3255-4921-907c-73c8915584af/database/chrono/schema/dbo/table/Event" />
     <entry file="das://33cfdfe8-3255-4921-907c-73c8915584af/database/chrono/schema/dbo/table/EventProperty" />
@@ -745,26 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="644">
           <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/Timeline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="20" column="82" selection-start-line="20" selection-start-column="82" selection-end-line="20" selection-end-column="82" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -891,13 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="77" column="36" selection-start-line="73" selection-start-column="21" selection-end-line="77" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/stubs/PersistenceHandlerStub.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
@@ -952,18 +961,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/models/EventCreationModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="106" column="40" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1537#1538#0" expanded="true" />
-            <element signature="e#1570#1571#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/server/services/RestServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="533">
@@ -991,20 +988,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/server/models/EventCreationModelTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+        <state relative-caret-position="379">
+          <caret line="64" column="14" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1390#1391#0" expanded="true" />
+            <element signature="e#1415#1416#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/Timeline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1003#1004#0" expanded="true" />
+            <element signature="e#1028#1029#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/stubs/RepositoryStub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="74">
           <caret line="18" column="93" selection-start-line="18" selection-start-column="93" selection-end-line="18" selection-end-column="93" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/server/models/EventCreationModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="828">
+          <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1537#1538#0" expanded="true" />
+            <element signature="e#1570#1571#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-engine/5.4.0-M1/junit-jupiter-engine-5.4.0-M1.jar!/org/junit/jupiter/engine/descriptor/TestMethodTestDescriptor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="141" selection-start-line="141" selection-end-line="141" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.4.0-M1/junit-platform-commons-1.4.0-M1.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="289" selection-start-line="289" selection-end-line="289" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/server/models/EventCreationModelTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
         </state>
       </provider>
     </entry>

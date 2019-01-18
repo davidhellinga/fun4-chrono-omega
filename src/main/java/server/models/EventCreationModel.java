@@ -37,7 +37,7 @@ public class EventCreationModel {
         this.persistenceHandler = persistenceHandler;
     }
 
-    public int getEventId() {
+    public Integer getEventId() {
         return eventId;
     }
 
@@ -61,7 +61,7 @@ public class EventCreationModel {
         this.date = date;
     }
 
-    public int getTimelineId() {
+    public Integer getTimelineId() {
         return timelineId;
     }
 

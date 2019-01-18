@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import stubs.PersistenceHandlerStub;
 import stubs.RepositoryStub;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class EventCreationModelTest {
 
@@ -19,7 +19,6 @@ class EventCreationModelTest {
         EventCreationModel eventModel = new EventCreationModel(persistenceHandler);
         Event event = repositoryStub.getEvent();
         EventProperty eventProperty = event.getProperties().get(0);
-//        EventPropertyModel eventPropertyModel=new EventPropertyModel(eventProperty.getId(),eventProperty.getDescription(),eventProperty.getName(), eventProperty.getEvent().getId());
 
         eventModel.fromEvent(event);
 
@@ -38,9 +37,47 @@ class EventCreationModelTest {
     }
 
     @Test
-    @Disabled("Not implemented yet")
-    void validateEvent() {
+    void fromEvenNullDataFailureTest() {
+        EventCreationModel eventModel = new EventCreationModel(persistenceHandler);
 
+        eventModel.fromEvent(null);
+
+        assertNull(eventModel.getName());
+        assertNull(eventModel.getDate());
+        assertNull(eventModel.getEventId());
+        assertNull(eventModel.getTimelineId());
+        assertEquals(eventModel.getProperties().size(), 0);
+
+    }
+
+    @Test
+    void validateEventValidDataSuccessTest() {
+        Event event = repositoryStub.getEvent();
+        EventCreationModel eventModel = new EventCreationModel(persistenceHandler);
+        EventProperty eventProperty = event.getProperties().get(0);
+        EventPropertyModel eventPropertyModel = new EventPropertyModel(eventProperty.getId(), eventProperty.getDescription(), eventProperty.getName(), eventProperty.getEvent().getId());
+        validateEventPrep(eventModel, eventPropertyModel, event.getId(), event.getDate(), event.getName(), event.getTimeline().getId());
+
+        assertTrue(eventModel.validateEvent());
+    }
+
+    @Test
+    void validateEventNoDataFailureTest() {
+        Event event = repositoryStub.getEvent();
+        EventCreationModel eventModel = new EventCreationModel(persistenceHandler);
+        EventProperty eventProperty = event.getProperties().get(0);
+
+        assertFalse(eventModel.validateEvent());
+
+
+    }
+
+    private void validateEventPrep(EventCreationModel eventModel, EventPropertyModel eventPropertyModel, Integer eventId, String eventDate, String eventName, Integer timelineId) {
+        eventModel.setEventId(eventId);
+        eventModel.setDate(eventDate);
+        eventModel.setName(eventName);
+        eventModel.setTimelineId(timelineId);
+        eventModel.addProperty(eventPropertyModel);
     }
 
     @Test
