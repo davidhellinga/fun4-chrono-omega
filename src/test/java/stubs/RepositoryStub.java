@@ -16,7 +16,7 @@ public class RepositoryStub {
         account.setId(1);
         account.addTimeline(timeline);
         unhashedPassword = "123opdekie";
-        account.setPassword("237716E67E22DAB2F0843D493BEFE2C46886E962BD14BB7F204C813DEF422B78");
+        account.setPassword("237716e67e22dab2f0843d493befe2c46886e962bd14bb7f204c813def422b78");
         account.setEmail("test@oibss.com");
 
         dateformat.setId(1);
