@@ -14,6 +14,8 @@ import java.util.List;
 @Path("/api")
 public class RestService {
 
+    //TODO: Unit tests with and without auth
+
     private PersistenceHandler persistenceHandler = new PersistenceHandler();
 
     //ADD REST FUNCTIONALITY HERE

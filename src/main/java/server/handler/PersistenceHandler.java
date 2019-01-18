@@ -14,7 +14,7 @@ import server.utils.JwtUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersistenceHandler {
+public class PersistenceHandler implements IPersistenceHandler{
 
     private AccountRepository accountRepository = new AccountRepository();
     private EventRepository eventRepository = new EventRepository();
@@ -25,6 +25,7 @@ public class PersistenceHandler {
     private HashUtil hashUtil = new HashUtil();
     private Gson gson = new Gson();
 
+    @Override
     public List<Account> getAccounts() {
         Session session = accountRepository.openSession();
         List queryResult = session.createCriteria(Account.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
@@ -42,7 +43,8 @@ public class PersistenceHandler {
 //        return (Account) query.uniqueResult();
 //    }
 
-    public Boolean newAccount(String email, String password) {
+    @Override
+    public boolean newAccount(String email, String password) {
         Account account = new Account();
 
         account.setEmail(email);
@@ -55,14 +57,17 @@ public class PersistenceHandler {
         return true;
     }
 
+    @Override
     public String login(String email, String password) {
         return jwtUtils.login(email, password);
     }
 
+    @Override
     public String verifyToken(String token) {
         return jwtUtils.isLoggedIn(token);
     }
 
+    @Override
     public List getTimelines(String email) {
         Session session = timelineRepository.openSession();
         Criteria query = session.createCriteria(Timeline.class);
@@ -72,6 +77,7 @@ public class PersistenceHandler {
     }
 
     //TODO: Dateformats
+    @Override
     public boolean newTimeline(String email, String name) {
         Session session = timelineRepository.openSession();
         Criteria query = session.createCriteria(Timeline.class, "tl");
@@ -96,6 +102,7 @@ public class PersistenceHandler {
         return true;
     }
 
+    @Override
     public Timeline getTimelineById(int id) {
         Session session = timelineRepository.openSession();
         Criteria query = session.createCriteria(Timeline.class);
@@ -103,7 +110,7 @@ public class PersistenceHandler {
         return (Timeline) query.uniqueResult();
     }
 
-
+@Override
     public boolean event(String eventData) {
         try {
             EventCreationModel eventIncoming = gson.fromJson(eventData, EventCreationModel.class);
@@ -125,6 +132,7 @@ public class PersistenceHandler {
         }
     }
 
+    @Override
     public boolean deleteEvent(int id) {
         try {
             Session eventSession = eventRepository.openSession();
@@ -150,6 +158,7 @@ public class PersistenceHandler {
 
     }
 
+    @Override
     public List<EventCreationModel> getEvents(int timelineId) {
         List<EventCreationModel> events = new ArrayList<>();
         Session eventSession = eventRepository.openSession();

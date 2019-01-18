@@ -2,6 +2,7 @@ package server.models;
 
 import models.Event;
 import models.EventProperty;
+import server.handler.IPersistenceHandler;
 import server.handler.PersistenceHandler;
 
 import java.util.ArrayList;
@@ -13,9 +14,9 @@ public class EventCreationModel {
     private Integer timelineId;
     private Integer eventId;
     private List<EventPropertyModel> properties = new ArrayList<>();
-    private transient PersistenceHandler persistenceHandler;
+    private transient IPersistenceHandler persistenceHandler;
 
-    public EventCreationModel(PersistenceHandler persistenceHandler) {
+    public EventCreationModel(IPersistenceHandler persistenceHandler) {
         this.persistenceHandler = persistenceHandler;
     }
 
@@ -36,7 +37,7 @@ public class EventCreationModel {
         this.persistenceHandler = persistenceHandler;
     }
 
-    public int getEventId() {
+    public Integer getEventId() {
         return eventId;
     }
 
@@ -60,7 +61,7 @@ public class EventCreationModel {
         this.date = date;
     }
 
-    public int getTimelineId() {
+    public Integer getTimelineId() {
         return timelineId;
     }
 
@@ -108,6 +109,7 @@ public class EventCreationModel {
         name = event.getName();
         date = event.getDate();
         eventId = event.getId();
+        timelineId=event.getTimeline().getId();
         for (EventProperty property :
                 event.getProperties()) {
             EventPropertyModel propertyModel = new EventPropertyModel(eventId, property.getDescription(), property.getName(), property.getId());
